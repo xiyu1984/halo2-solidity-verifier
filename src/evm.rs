@@ -65,7 +65,7 @@ pub(crate) mod test {
     /// # Panics
     /// Panics if executable `solc` can not be found, or compilation fails.
     pub fn compile_solidity(solidity: impl AsRef<[u8]>) -> Vec<u8> {
-        let mut process = match Command::new("solc")
+        let mut process = match Command::new("solcjs")
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .stderr(Stdio::piped())
@@ -89,6 +89,7 @@ pub(crate) mod test {
             .write_all(solidity.as_ref())
             .unwrap();
         let output = process.wait_with_output().unwrap();
+        println!("{:?}", output);
         let stdout = str::from_utf8(&output.stdout).unwrap();
         if let Some(binary) = find_binary(stdout) {
             binary
