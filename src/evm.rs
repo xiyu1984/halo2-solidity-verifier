@@ -65,7 +65,7 @@ pub(crate) mod test {
     /// # Panics
     /// Panics if executable `solc` can not be found, or compilation fails.
     pub fn compile_solidity(solidity: impl AsRef<[u8]>) -> Vec<u8> {
-        let mut process = match Command::new("solcjs")
+        let mut process = match Command::new("solc")
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .stderr(Stdio::piped())
