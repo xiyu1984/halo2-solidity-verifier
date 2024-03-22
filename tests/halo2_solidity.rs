@@ -112,7 +112,7 @@ impl<F: halo2_proofs::arithmetic::Field> PythagorasChip<F> {
         // });
 
         // define out gate (the same as above)
-        meta.create_gate("mul_add", |meta| {
+        meta.create_gate("mul_or_add", |meta| {
             let lhs = meta.query_advice(advice[0], Rotation::cur());
             let rhs = meta.query_advice(advice[1], Rotation::cur());
             let out = meta.query_advice(advice[0], Rotation::next());
