@@ -18,6 +18,9 @@ revm = { version = "3.3.0", default-features = false, optional = true }
 rand = "0.8.5"
 revm = { version = "3.3.0", default-features = false }
 halo2_maingate = { git = "https://github.com/privacy-scaling-explorations/halo2wrong", tag = "v2024_01_31", package = "maingate" }
+log = "0.4.14"
+env_logger = "0.10.0"
+colored = "2.0.0"
 
 [features]
 default = []
@@ -25,4 +28,8 @@ evm = ["dep:revm"]
 
 [[example]]
 name = "separately"
+required-features = ["evm"]
+
+[[test]]
+name = "halo2_solidity"
 required-features = ["evm"]
