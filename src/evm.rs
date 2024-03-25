@@ -89,7 +89,7 @@ pub(crate) mod test {
             .write_all(solidity.as_ref())
             .unwrap();
         let output = process.wait_with_output().unwrap();
-        println!("{:?}", output);
+        // println!("{:?}", output);
         let stdout = str::from_utf8(&output.stdout).unwrap();
         if let Some(binary) = find_binary(stdout) {
             binary
